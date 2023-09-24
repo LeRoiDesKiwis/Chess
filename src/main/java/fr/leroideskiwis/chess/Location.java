@@ -2,8 +2,8 @@ package fr.leroideskiwis.chess;
 
 public class Location {
 
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
 
     public Location(int x, int y){
         this.x = x;
@@ -16,9 +16,5 @@ public class Location {
             return location.x == x && location.y == x;
         }
         return false;
-    }
-
-    public void move(MovementType movementType, int tiles) {
-
     }
 }

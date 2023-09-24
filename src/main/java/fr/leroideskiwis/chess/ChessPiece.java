@@ -1,6 +1,6 @@
 package fr.leroideskiwis.chess;
 
-public class ChessPiece {
+public abstract class ChessPiece {
 
     private final Location location;
 
@@ -12,7 +12,7 @@ public class ChessPiece {
         return location.equals(this.location);
     }
 
-    public void move(MovementType movementType, int tiles) {
-        this.location.move(movementType, tiles);
-    }
+    public abstract ChessPiece moveTo(Location dest);
+
+    public abstract boolean canMove(Location dest);
 }
