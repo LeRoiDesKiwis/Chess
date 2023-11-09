@@ -6,7 +6,7 @@ import fr.leroideskiwis.chess.Player;
 public abstract class Piece {
 
     protected final Location location;
-    private final Player player;
+    protected final Player player;
 
     public Piece(Player player, Location location){
         this.location = location;

@@ -1,9 +1,6 @@
 package fr.leroideskiwis.chess;
 
-import fr.leroideskiwis.chess.pieces.Bishop;
-import fr.leroideskiwis.chess.pieces.Knight;
-import fr.leroideskiwis.chess.pieces.Piece;
-import fr.leroideskiwis.chess.pieces.Rook;
+import fr.leroideskiwis.chess.pieces.*;
 
 import java.util.ArrayList;
 import java.util.List;
