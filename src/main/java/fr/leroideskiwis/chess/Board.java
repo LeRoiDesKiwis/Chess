@@ -13,29 +13,26 @@ public class Board {
 
     public Board(Player player1, Player player2, int size){
         this.size = size;
-        initBoard(player1, 0, 0, true);
-        initBoard(player1, 0, 0, false);
+        for(int y : new int[]{0, size-1}) {
 
-        initBoard(player2, 0, size-1, true);
-        initBoard(player2, 0, size-1, false);
-    }
+            Player player = y==0 ? player1 : player2;
+            for(int xDir : new int[]{-1, 1}) {
+                int x = xDir == 1 ? 0 : size - 1;
 
-    public void initBoard(Player player, int x, int y, boolean directionX){
+                pieces.add(new Rook(player, x, y));
+                pieces.add(new Knight(player, x + xDir, y));
+                pieces.add(new Bishop(player, x + (2 * xDir), y));
 
-        int directionX1 = directionX ? 1 : -1;
+                if(xDir == 1) pieces.add(new Queen(player, x + 3, y));
+                else pieces.add(new King(player, x - 3, y));
+            }
 
-        x = directionX ? x : size-1-x;
-        pieces.add(new Rook(player, x, y));
-        pieces.add(new Knight(player, x+directionX1, y));
-        pieces.add(new Bishop(player, x+(2*directionX1), y));
-        pieces.add(directionX ?
-                new Queen(player, x+3, y) : new King(player, x-3, y));
+            y = y == 0 ? 1 : size - 2;
+            for (int i = 0; i < 8; i++) {
+                pieces.add(new Pawn(player, i, y));
+            }
 
-        y = y==0 ? 1 : size-2;
-        for(int i = 0; i < 8; i++){
-            pieces.add(new Pawn(player, i, y));
         }
-
     }
 
     private Optional<Piece> getPiece(Location location){
