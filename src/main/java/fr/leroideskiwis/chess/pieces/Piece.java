@@ -1,4 +1,7 @@
-package fr.leroideskiwis.chess;
+package fr.leroideskiwis.chess.pieces;
+
+import fr.leroideskiwis.chess.Location;
+import fr.leroideskiwis.chess.Player;
 
 public abstract class Piece {
 
@@ -8,6 +11,10 @@ public abstract class Piece {
     public Piece(Player player, Location location){
         this.location = location;
         this.player = player;
+    }
+
+    public Piece(Player player, int x, int y){
+        this(player, new Location(x, y));
     }
 
     public boolean isLocateAt(Location location) {
