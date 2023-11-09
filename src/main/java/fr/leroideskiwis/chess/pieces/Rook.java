@@ -13,9 +13,4 @@ public class Rook extends Piece {
     public boolean canMove(Location dest) {
         return super.canMove(dest) && location.diff(dest)[1] == 0;
     }
-
-    @Override
-    public String toString() {
-        return "R";
-    }
 }

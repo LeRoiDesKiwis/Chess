@@ -28,4 +28,9 @@ public abstract class Piece {
     public boolean canMove(Location dest){
         return !location.equals(dest) && location.diff(dest)[1] > 0;
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(getClass().getSimpleName().charAt(0)).toUpperCase();
+    }
 }

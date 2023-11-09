@@ -6,9 +6,4 @@ public class Knight extends Piece {
     public Knight(Player player, int x, int y) {
         super(player, x, y);
     }
-
-    @Override
-    public String toString() {
-        return "K";
-    }
 }

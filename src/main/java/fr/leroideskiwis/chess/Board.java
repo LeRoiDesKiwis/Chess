@@ -8,7 +8,6 @@ import fr.leroideskiwis.chess.pieces.Rook;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.BiFunction;
 
 public class Board {
 
@@ -17,23 +16,29 @@ public class Board {
 
     public Board(Player player1, Player player2, int size){
         this.size = size;
-        init1(player1, 0, 0, true);
-        init1(player1, 0, 0, false);
+        initBoard(player1, 0, 0, true);
+        initBoard(player1, 0, 0, false);
 
-        init1(player1, 0, size-1, true);
-        init1(player1, 0, size-1, false);
+        initBoard(player2, 0, size-1, true);
+        initBoard(player2, 0, size-1, false);
     }
 
-    public void init1(Player player, int x, int y, boolean directionX){
+    public void initBoard(Player player, int x, int y, boolean directionX){
 
-        BiFunction<Integer, Integer, Integer> add = directionX ?
-                (Integer::sum) :
-                ((n, n1) -> n-n1);
+        int directionX1 = directionX ? 1 : -1;
 
         x = directionX ? x : size-1-x;
         pieces.add(new Rook(player, x, y));
-        pieces.add(new Knight(player, add.apply(x, 1), y));
-        pieces.add(new Bishop(player, add.apply(x, 2), y));
+        pieces.add(new Knight(player, x+directionX1, y));
+        pieces.add(new Bishop(player, x+(2*directionX1), y));
+        pieces.add(directionX ?
+                new Queen(player, x+3, y) : new King(player, x-3, y));
+
+        y = y==0 ? 1 : size-2;
+        for(int i = 0; i < 8; i++){
+            pieces.add(new Pawn(player, i, y));
+        }
+
     }
 
     private Optional<Piece> getPiece(Location location){

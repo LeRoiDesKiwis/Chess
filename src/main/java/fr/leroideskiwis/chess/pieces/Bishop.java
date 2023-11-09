@@ -6,9 +6,4 @@ public class Bishop extends Piece {
     public Bishop(Player player, int x, int y) {
         super(player, x, y);
     }
-
-    @Override
-    public String toString() {
-        return "B";
-    }
 }
