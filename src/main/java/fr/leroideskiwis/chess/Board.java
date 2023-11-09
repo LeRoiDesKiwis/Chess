@@ -4,23 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class ChessBoard {
+public class Board {
 
-    private final List<ChessPiece> pieces = new ArrayList<>();
+    private final List<Piece> pieces = new ArrayList<>();
 
-    private Optional<ChessPiece> getPiece(Location location){
+    private Optional<Piece> getPiece(Location location){
         return new ArrayList<>(pieces).stream().filter(piece -> piece.isLocateAt(location)).findFirst();
     }
 
     public void move(Location source, Location dest){
-        getPiece(source).ifPresent(chessPiece -> {
-            pieces.remove(chessPiece);
-            pieces.add(chessPiece.moveTo(dest));
-        });
+        getPiece(source).ifPresent(piece -> piece.moveTo(dest));
     }
 
     public boolean canMove(Location source, Location dest){
-        Optional<ChessPiece> chessPiece = getPiece(source);
+        Optional<Piece> chessPiece = getPiece(source);
         return chessPiece.isPresent() && chessPiece.get().canMove(dest);
     }
 }

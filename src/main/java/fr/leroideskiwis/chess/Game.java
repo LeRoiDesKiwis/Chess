@@ -1,4 +1,4 @@
 package fr.leroideskiwis.chess;
 
-public class ChessGame {
+public class Game {
 }
