@@ -53,8 +53,14 @@ public class Board {
     }
 
     public void display(){
+        String values = "ABCDEFGH";
+        System.out.print("  ");
+        for(int i = 0; i < size; i++){
+            System.out.print(i+1+" ");
+        }
+        System.out.println("\n  _ _ _ _ _ _ _ _");
         for(int x = 0; x < size; x++){
-
+            System.out.print(values.charAt(x)+"|");
             for(int y = 0; y < size; y++){
                 Optional<Piece> piece = getPiece(new Location(y, x));
                 piece.ifPresentOrElse(

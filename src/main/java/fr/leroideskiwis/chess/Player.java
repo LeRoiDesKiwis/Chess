@@ -1,20 +1,32 @@
 package fr.leroideskiwis.chess;
 
-import java.util.Optional;
-
 public class Player {
 
-    public boolean play(Board board, String fromStr, String toStr){
-        Optional<Location> fromOpt = Location.parseString(fromStr);
-        Optional<Location> toOpt = Location.parseString(toStr);
+    private final int id;
 
-        if(fromOpt.isEmpty() || toOpt.isEmpty()) return false;
-        Location from = fromOpt.get();
-        Location to = toOpt.get();
+    public Player(int id){
+        this.id = id;
+    }
+
+    public boolean play(Board board, Location from, Location to){
         if(!board.possess(this, from) ||
             !board.canMove(from, to)) return false;
         board.move(from, to);
         return true;
     }
 
+    //TODO
+    public boolean isCheckmate(){
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Player "+id;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof Player && ((Player)obj).id == this.id;
+    }
 }

@@ -8,9 +8,10 @@ public class Location {
     private int y;
 
     public static Optional<Location> parseString(String s){
+        if(s.length() < 2) return Optional.empty();
         int x;
         try {
-            x = Integer.parseInt(String.valueOf(s.charAt(1)).toLowerCase());
+            x = Integer.parseInt(String.valueOf(s.charAt(1)).toLowerCase())-1;
         }catch(NumberFormatException e){
             return Optional.empty();
         }

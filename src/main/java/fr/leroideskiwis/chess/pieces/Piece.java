@@ -26,7 +26,8 @@ public abstract class Piece {
     }
 
     public boolean canMove(Location dest){
-        return !location.equals(dest) && location.diff(dest)[1] > 0;
+        int diff = location.diff(dest)[1];
+        return !location.equals(dest);
     }
 
     @Override
