@@ -48,6 +48,10 @@ public class Board {
         return chessPiece.isPresent() && chessPiece.get().canMove(dest);
     }
 
+    public boolean possess(Player player, Location location){
+        return getPiece(location).stream().anyMatch(piece -> piece.isPossessedBy(player));
+    }
+
     public void display(){
         for(int x = 0; x < size; x++){
 

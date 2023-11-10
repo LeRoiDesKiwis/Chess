@@ -33,4 +33,8 @@ public abstract class Piece {
     public String toString() {
         return String.valueOf(getClass().getSimpleName().charAt(0)).toUpperCase();
     }
+
+    public boolean isPossessedBy(Player player) {
+        return player.equals(this.player);
+    }
 }
