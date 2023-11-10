@@ -1,9 +1,26 @@
 package fr.leroideskiwis.chess;
 
+import java.util.Optional;
+
 public class Location {
 
     private int x;
     private int y;
+
+    public static Optional<Location> parseString(String s){
+        int x;
+        try {
+            x = Integer.parseInt(String.valueOf(s.charAt(1)).toLowerCase());
+        }catch(NumberFormatException e){
+            return Optional.empty();
+        }
+        String values = "abcdefgh";
+        String yChar = String.valueOf(s.charAt(0));
+        if(!values.contains(yChar)) return Optional.empty();
+        Location location = new Location(x, values.indexOf(yChar));
+        return Optional.of(location);
+
+    }
 
     public Location(int x, int y){
         this.x = x;
@@ -25,5 +42,10 @@ public class Location {
             return location.x == x && location.y == y;
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("x = %d ; y = %d", x, y);
     }
 }

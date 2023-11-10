@@ -5,5 +5,6 @@ public class Main {
         Player[] players = new Player[]{new Player(), new Player()};
         Board board = new Board(players[0], players[1], 8);
         board.display();
+
     }
 }
