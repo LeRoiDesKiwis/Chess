@@ -15,6 +15,8 @@ public class Rook extends Piece {
 
     @Override
     public boolean canMove(Location dest) {
-        return super.canMove(dest) && location.diff(dest)[1] == 0;
+        int[] diff = location.diff(dest);
+        return super.canMove(dest) && !(diff[1] != 0 && diff[0] != 0);
+
     }
 }
